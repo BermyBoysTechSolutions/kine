@@ -1,0 +1,46 @@
+{
+  "name": "kine",
+  "version": "1.0.0",
+  "description": "Kine - Your AI Fitness Coach. React Native app for iOS, Android, and Web.",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "start:web": "expo start --web",
+    "start:android": "expo start --android",
+    "start:ios": "expo start --ios",
+    "build:web": "expo export --platform web",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "expo": "~54.0.33",
+    "expo-av": "^16.0.8",
+    "expo-camera": "^17.0.10",
+    "expo-status-bar": "~3.0.9",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-web": "^0.21.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.0",
+    "typescript": "~5.9.2"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BermyBoysTechSolutions/kine.git"
+  },
+  "keywords": [
+    "fitness",
+    "ai",
+    "coach",
+    "react-native",
+    "expo",
+    "health"
+  ],
+  "author": "Bermy Boys Tech Solutions",
+  "license": "MIT"
+}
