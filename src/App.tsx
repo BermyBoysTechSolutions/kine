@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView, Platform } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Pricing from './components/Pricing';
-import VideoCoach from './components/VideoCoach';
 
 export default function App() {
   return (
@@ -12,7 +11,6 @@ export default function App() {
       <StatusBar style="auto" />
       <Hero />
       <Features />
-      <VideoCoach />
       <Pricing />
       <View style={styles.footer}>
         <Text style={styles.footerText}>
