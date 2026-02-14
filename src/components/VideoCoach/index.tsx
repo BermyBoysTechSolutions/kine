@@ -1,13 +1,11 @@
-// Platform-agnostic wrapper that imports the correct implementation
+import React from 'react';
 import { Platform } from 'react-native';
+import VideoCoachWeb from './VideoCoach.web';
+import VideoCoachNative from './VideoCoach.native';
 
-// Import the appropriate implementation based on platform
-let VideoCoach: React.FC;
-
-if (Platform.OS === 'web') {
-  VideoCoach = require('./VideoCoach.web').default;
-} else {
-  VideoCoach = require('./VideoCoach.native').default;
+export default function VideoCoach() {
+  if (Platform.OS === 'web') {
+    return <VideoCoachWeb />;
+  }
+  return <VideoCoachNative />;
 }
-
-export default VideoCoach;
