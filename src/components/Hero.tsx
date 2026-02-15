@@ -22,56 +22,66 @@ export default function Hero() {
   };
 
   return (
-    <View style={styles.hero}>
-      <View style={styles.logoContainer}>
-        <Logo size={isMobile ? 32 : 40} />
-      </View>
-      
-      <View style={styles.badge}>
-        <Text style={styles.badgeText}>🚀 Launching Q2 2026</Text>
-      </View>
-      
-      <Text style={[styles.title, isMobile && styles.titleMobile]}>
-        Your Personal
-      </Text>
-      <Text style={[styles.highlight, isMobile && styles.highlightMobile]}>
-        AI Fitness Coach
-      </Text>
-      
-      <Text style={[styles.subtitle, isMobile && styles.subtitleMobile]}>
-        Talk naturally. Get real-time form feedback. Track nutrition with your voice.
-        Your dedicated AI trainer — available 24/7.
-      </Text>
-
-      <View style={[styles.form, isMobile && styles.formMobile]}>
-        <TextInput
-          style={[styles.input, isMobile && styles.inputMobile]}
-          placeholder="Enter your email"
-          placeholderTextColor="#666"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TouchableOpacity style={[styles.button, isMobile && styles.buttonMobile]} onPress={handleSubmit}>
-          <Text style={[styles.buttonText, isMobile && styles.buttonTextMobile]}>Get Early Access</Text>
-        </TouchableOpacity>
+    <View style={styles.container}>
+      {/* Header with Logo */}
+      <View style={styles.header}>
+        <Logo size={36} />
       </View>
 
-      <Text style={styles.note}>
-        ✨ 500+ people already on the waitlist
-      </Text>
+      {/* Main Content - Two Column on Desktop */}
+      <View style={[styles.mainContent, !isMobile && styles.mainContentDesktop]}>
+        {/* Left Column - Text and Form */}
+        <View style={[styles.leftColumn, !isMobile && styles.leftColumnDesktop]}>
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>🚀 Launching Q2 2026</Text>
+          </View>
+          
+          <Text style={[styles.title, isMobile && styles.titleMobile]}>
+            Your Personal
+          </Text>
+          <Text style={[styles.highlight, isMobile && styles.highlightMobile]}>
+            AI Fitness Coach
+          </Text>
+          
+          <Text style={[styles.subtitle, isMobile && styles.subtitleMobile]}>
+            Talk naturally. Get real-time form feedback. Track nutrition with your voice.
+            Your dedicated AI trainer — available 24/7.
+          </Text>
 
-      <View style={styles.chatPreview}>
-        <View style={styles.chatBubbleUser}>
-          <Text style={styles.chatTextUser}>
-            I ate 2 eggs and toast for breakfast
+          <View style={[styles.form, isMobile && styles.formMobile]}>
+            <TextInput
+              style={[styles.input, isMobile && styles.inputMobile]}
+              placeholder="Enter your email"
+              placeholderTextColor="#666"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <TouchableOpacity style={[styles.button, isMobile && styles.buttonMobile]} onPress={handleSubmit}>
+              <Text style={[styles.buttonText, isMobile && styles.buttonTextMobile]}>Get Early Access</Text>
+            </TouchableOpacity>
+          </View>
+
+          <Text style={styles.note}>
+            ✨ 500+ people already on the waitlist
           </Text>
         </View>
-        <View style={styles.chatBubbleAI}>
-          <Text style={styles.chatTextAI}>
-            That's 12g protein. Aim for 30g at breakfast to hit your goal 💪
-          </Text>
+
+        {/* Right Column - Chat Demo */}
+        <View style={[styles.rightColumn, !isMobile && styles.rightColumnDesktop]}>
+          <View style={styles.chatPreview}>
+            <View style={styles.chatBubbleUser}>
+              <Text style={styles.chatTextUser}>
+                I ate 2 eggs and toast for breakfast
+              </Text>
+            </View>
+            <View style={styles.chatBubbleAI}>
+              <Text style={styles.chatTextAI}>
+                That's 12g protein. Aim for 30g at breakfast to hit your goal 💪
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>
@@ -79,13 +89,38 @@ export default function Hero() {
 }
 
 const styles = StyleSheet.create({
-  hero: {
-    padding: 24,
-    paddingTop: Platform.OS === 'web' ? 60 : 40,
-    alignItems: 'center',
+  container: {
+    paddingTop: Platform.OS === 'web' ? 24 : 16,
+    paddingBottom: 60,
   },
-  logoContainer: {
-    marginBottom: 32,
+  header: {
+    marginBottom: 40,
+    paddingHorizontal: 16,
+  },
+  mainContent: {
+    flexDirection: 'column',
+  },
+  mainContentDesktop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 60,
+  },
+  leftColumn: {
+    flex: 1,
+    paddingHorizontal: 16,
+  },
+  leftColumnDesktop: {
+    flex: 1.2,
+    paddingHorizontal: 0,
+  },
+  rightColumn: {
+    flex: 1,
+    marginTop: 40,
+    paddingHorizontal: 16,
+  },
+  rightColumnDesktop: {
+    marginTop: 0,
+    paddingHorizontal: 0,
   },
   badge: {
     backgroundColor: '#1a1a1a',
@@ -95,6 +130,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     borderWidth: 1,
     borderColor: '#333',
+    alignSelf: 'flex-start',
   },
   badgeText: {
     color: '#00d4ff',
@@ -105,7 +141,6 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: 'bold',
     color: '#fff',
-    textAlign: 'center',
     lineHeight: 56,
   },
   titleMobile: {
@@ -116,7 +151,6 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: 'bold',
     color: '#00d4ff',
-    textAlign: 'center',
     marginBottom: 16,
   },
   highlightMobile: {
@@ -126,11 +160,9 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 18,
     color: '#999',
-    textAlign: 'center',
-    maxWidth: 600,
+    maxWidth: 500,
     marginBottom: 32,
     lineHeight: 28,
-    paddingHorizontal: 16,
   },
   subtitleMobile: {
     fontSize: 16,
@@ -142,12 +174,9 @@ const styles = StyleSheet.create({
     gap: 12,
     marginBottom: 16,
     maxWidth: 500,
-    width: '100%',
   },
   formMobile: {
     flexDirection: 'column',
-    width: '100%',
-    paddingHorizontal: 16,
   },
   input: {
     flex: 1,
@@ -183,13 +212,11 @@ const styles = StyleSheet.create({
   note: {
     color: '#666',
     fontSize: 14,
-    marginBottom: 40,
   },
   chatPreview: {
     width: '100%',
     maxWidth: 400,
     gap: 12,
-    paddingHorizontal: 16,
   },
   chatBubbleUser: {
     backgroundColor: '#1a1a1a',
