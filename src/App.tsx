@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
   },
   inner: {
     width: '100%',
-    maxWidth: 1400,
-    paddingHorizontal: width > 768 ? 64 : 24,
+    maxWidth: 1100,
+    paddingHorizontal: width > 768 ? 32 : 16,
   },
   footer: {
     padding: 40,
