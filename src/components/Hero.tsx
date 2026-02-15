@@ -5,39 +5,47 @@ import {
   StyleSheet, 
   TextInput, 
   TouchableOpacity,
-  Platform 
+  Platform,
+  Dimensions 
 } from 'react-native';
+import Logo from './Logo';
+
+const { width } = Dimensions.get('window');
+const isMobile = width < 768;
 
 export default function Hero() {
   const [email, setEmail] = useState('');
 
   const handleSubmit = () => {
-    // TODO: Connect to backend/waitlist service
     alert(`Thanks! We'll notify you when Kine launches: ${email}`);
     setEmail('');
   };
 
   return (
     <View style={styles.hero}>
+      <View style={styles.logoContainer}>
+        <Logo size={isMobile ? 32 : 40} />
+      </View>
+      
       <View style={styles.badge}>
         <Text style={styles.badgeText}>🚀 Launching Q2 2026</Text>
       </View>
       
-      <Text style={styles.title}>
+      <Text style={[styles.title, isMobile && styles.titleMobile]}>
         Your Personal
       </Text>
-      <Text style={styles.highlight}>
+      <Text style={[styles.highlight, isMobile && styles.highlightMobile]}>
         AI Fitness Coach
       </Text>
       
-      <Text style={styles.subtitle}>
+      <Text style={[styles.subtitle, isMobile && styles.subtitleMobile]}>
         Talk naturally. Get real-time form feedback. Track nutrition with your voice.
         Your dedicated AI trainer — available 24/7.
       </Text>
 
-      <View style={styles.form}>
+      <View style={[styles.form, isMobile && styles.formMobile]}>
         <TextInput
-          style={styles.input}
+          style={[styles.input, isMobile && styles.inputMobile]}
           placeholder="Enter your email"
           placeholderTextColor="#666"
           value={email}
@@ -45,8 +53,8 @@ export default function Hero() {
           keyboardType="email-address"
           autoCapitalize="none"
         />
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Get Early Access</Text>
+        <TouchableOpacity style={[styles.button, isMobile && styles.buttonMobile]} onPress={handleSubmit}>
+          <Text style={[styles.buttonText, isMobile && styles.buttonTextMobile]}>Get Early Access</Text>
         </TouchableOpacity>
       </View>
 
@@ -54,7 +62,6 @@ export default function Hero() {
         ✨ 500+ people already on the waitlist
       </Text>
 
-      {/* Chat Preview */}
       <View style={styles.chatPreview}>
         <View style={styles.chatBubbleUser}>
           <Text style={styles.chatTextUser}>
@@ -77,6 +84,9 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'web' ? 60 : 40,
     alignItems: 'center',
   },
+  logoContainer: {
+    marginBottom: 32,
+  },
   badge: {
     backgroundColor: '#1a1a1a',
     paddingHorizontal: 16,
@@ -98,12 +108,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 56,
   },
+  titleMobile: {
+    fontSize: 32,
+    lineHeight: 40,
+  },
   highlight: {
     fontSize: 48,
     fontWeight: 'bold',
     color: '#00d4ff',
     textAlign: 'center',
     marginBottom: 16,
+  },
+  highlightMobile: {
+    fontSize: 36,
+    marginBottom: 12,
   },
   subtitle: {
     fontSize: 18,
@@ -112,6 +130,12 @@ const styles = StyleSheet.create({
     maxWidth: 600,
     marginBottom: 32,
     lineHeight: 28,
+    paddingHorizontal: 16,
+  },
+  subtitleMobile: {
+    fontSize: 16,
+    lineHeight: 24,
+    marginBottom: 24,
   },
   form: {
     flexDirection: 'row',
@@ -119,6 +143,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     maxWidth: 500,
     width: '100%',
+  },
+  formMobile: {
+    flexDirection: 'column',
+    width: '100%',
+    paddingHorizontal: 16,
   },
   input: {
     flex: 1,
@@ -130,6 +159,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
+  inputMobile: {
+    width: '100%',
+  },
   button: {
     backgroundColor: '#00d4ff',
     paddingHorizontal: 24,
@@ -137,10 +169,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
   },
+  buttonMobile: {
+    width: '100%',
+  },
   buttonText: {
     color: '#000',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  buttonTextMobile: {
+    textAlign: 'center',
   },
   note: {
     color: '#666',
@@ -151,6 +189,7 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 400,
     gap: 12,
+    paddingHorizontal: 16,
   },
   chatBubbleUser: {
     backgroundColor: '#1a1a1a',
