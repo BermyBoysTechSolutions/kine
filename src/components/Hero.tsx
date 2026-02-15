@@ -90,28 +90,32 @@ export default function Hero() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Platform.OS === 'web' ? 24 : 16,
-    paddingBottom: 60,
+    paddingTop: Platform.OS === 'web' ? 32 : 20,
+    paddingBottom: 80,
+    minHeight: Platform.OS === 'web' ? '80vh' : undefined,
   },
   header: {
-    marginBottom: 40,
-    paddingHorizontal: 16,
+    marginBottom: 60,
+    paddingHorizontal: 48,
   },
   mainContent: {
     flexDirection: 'column',
   },
   mainContentDesktop: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 60,
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: 80,
+    paddingHorizontal: 48,
   },
   leftColumn: {
     flex: 1,
     paddingHorizontal: 16,
   },
   leftColumnDesktop: {
-    flex: 1.2,
+    flex: 1,
     paddingHorizontal: 0,
+    paddingTop: 20,
   },
   rightColumn: {
     flex: 1,
@@ -119,8 +123,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   rightColumnDesktop: {
-    marginTop: 0,
+    marginTop: 60,
     paddingHorizontal: 0,
+    display: 'flex',
+    justifyContent: 'center',
   },
   badge: {
     backgroundColor: '#1a1a1a',
@@ -215,32 +221,37 @@ const styles = StyleSheet.create({
   },
   chatPreview: {
     width: '100%',
-    maxWidth: 400,
-    gap: 12,
+    maxWidth: 450,
+    gap: 16,
+    alignSelf: 'center',
   },
   chatBubbleUser: {
     backgroundColor: '#1a1a1a',
-    padding: 16,
-    borderRadius: 16,
+    padding: 20,
+    borderRadius: 20,
     borderBottomRightRadius: 4,
     alignSelf: 'flex-end',
-    maxWidth: '80%',
+    maxWidth: '85%',
+    borderWidth: 1,
+    borderColor: '#333',
   },
   chatTextUser: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 15,
+    lineHeight: 22,
   },
   chatBubbleAI: {
     backgroundColor: '#00d4ff',
-    padding: 16,
-    borderRadius: 16,
+    padding: 20,
+    borderRadius: 20,
     borderBottomLeftRadius: 4,
     alignSelf: 'flex-start',
-    maxWidth: '80%',
+    maxWidth: '85%',
   },
   chatTextAI: {
     color: '#000',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '500',
+    lineHeight: 22,
   },
 });
