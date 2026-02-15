@@ -1,19 +1,24 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Dimensions } from 'react-native';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Pricing from './components/Pricing';
 
+const { width } = Dimensions.get('window');
+
 export default function App() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Hero />
-      <Features />
-      <Pricing />
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>
-          © 2026 Kine. Your AI Fitness Coach.
-        </Text>
+      <View style={styles.inner}>
+        <Hero />
+        <Features />
+        <Pricing />
+        
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>
+            © 2026 Kine. Your AI Fitness Coach.
+          </Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -26,12 +31,19 @@ const styles = StyleSheet.create({
   },
   content: {
     flexGrow: 1,
+    alignItems: 'center',
+  },
+  inner: {
+    width: '100%',
+    maxWidth: 1400,
+    paddingHorizontal: width > 768 ? 64 : 24,
   },
   footer: {
-    padding: 20,
+    padding: 40,
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: '#333',
+    marginTop: 40,
   },
   footerText: {
     color: '#666',
