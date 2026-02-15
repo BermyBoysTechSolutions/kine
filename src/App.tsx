@@ -1,14 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Pricing from './components/Pricing';
 
 export default function App() {
   return (
-    <ScrollView style={styles.container}>
-      <StatusBar style="auto" />
+    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <Hero />
       <Features />
       <Pricing />
@@ -25,6 +23,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#0a0a0a',
+  },
+  content: {
+    flexGrow: 1,
   },
   footer: {
     padding: 20,
