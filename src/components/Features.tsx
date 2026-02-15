@@ -91,14 +91,15 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     gap: 20,
   },
   card: {
     backgroundColor: '#1a1a1a',
     borderRadius: 16,
     padding: 24,
-    width: 300,
+    width: '30%',
+    minWidth: 280,
     borderWidth: 1,
     borderColor: '#333',
   },
